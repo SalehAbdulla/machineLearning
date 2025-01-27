@@ -1,29 +1,37 @@
 # Polynomial Regression
-
-# import libraries
-import pandas as pd
+# Import libraries
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 
-# import dataset
-dataset = pd.read_csv("Position_Salaries.csv")
+# importing dataset
+dataset = pd.read_csv('Position_Salaries.csv')
 X = dataset.iloc[:, 1:2].values  # Features
-y = dataset.iloc[:, -1].values  # Dependent Vector
+y = dataset.iloc[:, -1].values  # Dependent vector
 
-# Optional for visualisation  linear regression
+# for testing only lin_reg
 from sklearn.linear_model import LinearRegression
 lin_reg = LinearRegression()
 lin_reg.fit(X, y)
 
-# Creating Polynomial model
+#plt.scatter(X, y, color='red')
+#plt.plot(X, lin_reg.predict(X), color='blue')
+#plt.title("Salary prediction using linear regression")
+#plt.show()
+
+# Polynomial Regression
 from sklearn.preprocessing import PolynomialFeatures
-poly_reg = PolynomialFeatures(degree=4)
+poly_reg = PolynomialFeatures(degree=6)
 X_poly = poly_reg.fit_transform(X)
 
-# Creating another linear regression for visualisation, feeding poly_red instead of X
+# Applying polynomial regression in linear regression
 lin_reg_2 = LinearRegression()
 lin_reg_2.fit(X_poly, y)
 
-# Prediction for position X = 6.5
-#new_X_pred = poly_reg.fit_transform([[6.5]])
-print(lin_reg_2.predict(poly_reg.fit_transform([[6.5]])))
+plt.scatter(X, y, color='red')
+plt.plot(X, lin_reg_2.predict(X_poly), color='blue')
+plt.title('Truth or Bluff (Polynomial Regression)')
+plt.xlabel('Position level')
+plt.ylabel('Salary')
+plt.show()
+

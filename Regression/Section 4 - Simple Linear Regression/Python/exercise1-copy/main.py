@@ -47,3 +47,4 @@ plt.show()
 print(f"20 years of experience, the income would be = {regressor.predict([[20]])}")
 print(f"Coefficient is equal = {regressor.coef_}")
 print(f"Intercept is equal = {regressor.intercept_}")
+
