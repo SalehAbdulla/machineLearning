@@ -26,3 +26,4 @@ classifier = KNeighborsClassifier(n_neighbors=5, weights='uniform', algorithm='a
 
 classifier.fit(X_train, y_train)
 pred_val = classifier.predict(sc.transform([[30, 87000]]))
+
